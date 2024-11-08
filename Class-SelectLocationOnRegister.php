@@ -57,6 +57,6 @@ class SelectLocationOnRegister
 	 */
 	public function register(&$regOptions)
 	{
-		$regOptions['register_vars']['lngfile'] = isset($_POST['location']) ? $_POST['location'] : '';
+		$regOptions['register_vars']['locfile'] = isset($_POST['location']) ? $_POST['location'] : '';
 	}
 }
