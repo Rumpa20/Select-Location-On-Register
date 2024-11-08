@@ -8,7 +8,7 @@
 	<type>modification</type>
 
 	<install for="2.1.4">
-		<require-file name="Sources/Class-SelectLocationOnRegister.php" destination="$sourcedir"/>
+		<require-file name="Class-SelectLocationOnRegister.php" destination="$sourcedir"/>
 		<hook hook="integrate_pre_load" function="Rumpa\SelectLocationOnRegister::hooks#" file="$sourcedir/Class-SelectLocationOnRegister.php"/>
 	</install>
 
