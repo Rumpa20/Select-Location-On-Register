@@ -30,22 +30,18 @@ class SelectLocationOnRegister
 	 */
 	public function loadCustomProfileFields()
 	{
-		global $context, $location, $txt;
+		global $context, $txt;
 
-		if (empty($context['location']) || in_array($context['current_action'], array('admin', 'signup')) === false)
+		if (in_array($context['current_action'], array('admin', 'signup')) === false)
 			return;
 
-		loadLocation('Profile');
+		loadLanguage('Profile');
 
-		$html = '';
-		foreach ($context['location'] as $loc => $data) {
-			$html .= '<option value="' . $loc . '"' . ($location == $loc ? ' selected' : '') . '>' . $data['name'] . '</option>';
-		}
 
 		$context['custom_fields'][] = array(
 			'name' => $txt['location'],
-			'desc' => $txt['preferred_location'],
-			'input_html' => '<select name="location" id="location">' . $html . '</select>',
+			'desc' => '',
+			'input_html' => '<input id="location" name="location" type="location">',
 			'show_reg' => '2'
 		);
 
@@ -57,6 +53,6 @@ class SelectLocationOnRegister
 	 */
 	public function register(&$regOptions)
 	{
-		$regOptions['register_vars']['locfile'] = isset($_POST['location']) ? $_POST['location'] : '';
+		$regOptions['register_vars']['location'] = $_POST['location'] ?? '';
 	}
 }
